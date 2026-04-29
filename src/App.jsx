@@ -1,17 +1,9 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
-import Register from './pages/Register/Register'
-import Movie from './pages/Movie/Movie'
 
 function App() {
-
   return (
     <>
-      <Register/>
-      <Movie/>
+      <h1>Welcome to React Starter Project</h1>
     </>
   )
 }
