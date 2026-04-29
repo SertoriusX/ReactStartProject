@@ -6,22 +6,21 @@ Vite + React starter template with a code generator and environment config.
 
 ```bash
 npm install
+npm run env
 npm run dev
 ```
 
 ## Environment Variables
 
-1. Copy `.env.example` to `.env`:
-```bash
-cp .env .env.example
-```
+Run `npm run env` to create an empty `.env` file. 
+Add your variables:
 
-2. Set your API URL in `.env`:
 ```
 VITE_BASE_URL=http://localhost:5000
 ```
 
-3. Use it in your code:
+Use it in your code:
+
 ```js
 import { BaseUrl } from './api/config'
 import axios from 'axios'
