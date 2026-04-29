@@ -1,16 +1,73 @@
-# React + Vite
+# React Start Project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Vite + React starter template with a code generator and environment config.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev
+```
 
-## React Compiler
+## Environment Variables
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Copy `.env.example` to `.env`:
+```bash
+cp .env .env.example
+```
 
-## Expanding the ESLint configuration
+2. Set your API URL in `.env`:
+```
+VITE_BASE_URL=http://localhost:5000
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3. Use it in your code:
+```js
+import { BaseUrl } from './api/config'
+import axios from 'axios'
+axios.get(`${BaseUrl}/api/endpoint`)
+```
+
+## Code Generator
+
+Generate boilerplate code with one command:
+
+### Pages
+```bash
+npm run g p <Name>
+```
+Creates `src/pages/<Name>/` with:
+- `<Name>.jsx` — component
+- `<Name>Hook.jsx` — custom hook (useState + axios)
+- `<Name>.css` — styles
+
+### Components
+```bash
+npm run g c <Name>
+```
+Creates `src/components/<Name>/` with the same 3 files.
+
+### Reducer Context
+```bash
+npm run g r <Name>
+```
+Creates `src/context/<Name>/` with:
+- `<Name>Context.js` — React.createContext()
+- `<Name>ContextProvider.jsx` — useReducer provider with initialState and dispatch
+
+### User Context (token + localStorage)
+```bash
+npm run g u <Name>
+```
+Creates `src/context/<Name>/` with:
+- `<Name>Context.js` — React.createContext()
+- `<Name>ContextProvider.jsx` — useState provider with token, saveToken, removeToken (localStorage)
+
+## Examples
+
+```bash
+npm run g p Login       → page with Login.jsx, LoginHook.jsx, Login.css
+npm run g c Navbar      → component with Navbar.jsx, NavbarHook.jsx, Navbar.css
+npm run g r Movie       → reducer context with MovieContext.js, MovieContextProvider.jsx
+npm run g u User        → user context with UserContext.js, UserContextProvider.jsx
+```
